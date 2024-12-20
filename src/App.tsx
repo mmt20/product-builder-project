@@ -1,8 +1,9 @@
 import { useState } from "react";
 import ProductCard from "./components/ProductCard";
 import Modal from "./components/ui/Modal";
-import { productList } from "./data";
+import { formInputsList, productList } from "./data";
 import Button from "./components/ui/Button";
+import Input from "./components/ui/Input";
 const App = () => {
   /* ------- STATE -------  */
   const [isOpen, setIsOpen] = useState(false);
@@ -20,6 +21,13 @@ const App = () => {
   const renderProductList = productList.map((product) => (
     <ProductCard product={product} key={product.id} />
   ));
+
+  const renderFormInputList = formInputsList.map((input) => (
+    <div className="flex flex-col">
+      <label htmlFor={input.label}>{input.label}</label>
+      <Input type="text" id={input.id} name={input.name} />
+    </div>
+  ));
   return (
     <main className="container">
       <Button className="bg-indigo-700 hover:bg-indigo-800" onClick={openModal}>
@@ -29,10 +37,15 @@ const App = () => {
         {renderProductList}
       </div>
       <Modal isOpen={isOpen} closeModal={closeModal} title="ADD NEW PRODUCT">
-        <div className="flex items-center space-x-3 ">
-          <Button className="bg-indigo-700 hover:bg-indigo-800">Submit</Button>
-          <Button className="bg-gray-300 hover:bg-gray-800">Cancel</Button>
-        </div>
+        <form className="space-y-3">
+          {renderFormInputList}
+          <div className="flex items-center space-x-3 ">
+            <Button className="bg-indigo-700 hover:bg-indigo-800">
+              Submit
+            </Button>
+            <Button className="bg-gray-400 hover:bg-gray-600">Cancel</Button>
+          </div>
+        </form>
       </Modal>
     </main>
   );
