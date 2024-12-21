@@ -1,8 +1,6 @@
 import { InputHTMLAttributes } from "react";
 
-interface IProps extends InputHTMLAttributes<HTMLInputElement> {}
-
-const Input = ({ ...rest }: IProps) => {
+const Input = ({ ...rest }: InputHTMLAttributes<HTMLInputElement>) => {
   return (
     <input
       className="border-[1px] border-gray-300 shadow-md 

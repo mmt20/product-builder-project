@@ -13,7 +13,10 @@ const App = () => {
     imageURL: "",
     price: "",
     colors: [],
-    category: { name: "", imageURL: "" },
+    category: {
+      name: "",
+      imageURL: "",
+    },
   });
   const [isOpen, setIsOpen] = useState(false);
 
@@ -43,14 +46,6 @@ const App = () => {
   const renderFormInputList = formInputsList.map((input) => (
     <div className="flex flex-col">
       <label htmlFor={input.label}>{input.label}</label>
-      {/* LINE BELOW IS WRONG NOW NEED TO FIX */}
-      {/* {<Input
-        type="text"
-        id={input.id}
-        name={input.name}
-        value={product[input.name]}
-        onChange={onChangeHandler}
-      />} */}
       <Input
         type="text"
         id={input.id}
