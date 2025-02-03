@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from "react";
+import { InputHTMLAttributes, memo } from "react";
 
 const Input = ({ ...rest }: InputHTMLAttributes<HTMLInputElement>) => {
   return (
@@ -11,4 +11,4 @@ const Input = ({ ...rest }: InputHTMLAttributes<HTMLInputElement>) => {
   );
 };
 
-export default Input;
+export default memo(Input);

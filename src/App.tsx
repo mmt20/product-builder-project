@@ -52,18 +52,21 @@ const App = () => {
   const closeConfirmModal = () => setIsOpenConfirmModal(false);
   const openConfirmModal = useCallback(() => setIsOpenConfirmModal(true), []);
 
-  const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    const { value, name } = event.target;
-    setProduct({
-      ...product,
-      [name]: value,
-    });
+  const onChangeHandler = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const { value, name } = event.target;
+      setProduct((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
 
-    setErrors({
-      ...errors,
-      [name]: "",
-    });
-  };
+      setErrors((prev) => ({
+        ...prev,
+        [name]: "",
+      }));
+    },
+    []
+  );
   const onChangeEditHandler = (event: ChangeEvent<HTMLInputElement>) => {
     const { value, name } = event.target;
     setProductToEdit({
@@ -393,6 +396,7 @@ const App = () => {
           </Button>
         </div>
       </Modal>
+
       <Toaster />
     </main>
   );
